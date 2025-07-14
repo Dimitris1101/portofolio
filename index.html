@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dimitris Liavas | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    h2 {
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+    }
+    .project {
+      display: inline-block;
+      width: 30%;
+      margin: 1rem;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .project img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .project p {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+    .contact-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+    .contact-info {
+      display: flex;
+      width: 100%;
+      max-width: 800px;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .card {
+      background: #2f3542;
+      padding: 1rem;
+      width: 30%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .card-icon {
+      font-size: 28px;
+      background: #ff6348;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      border-radius: 50%;
+      transition: 0.3s linear;
+    }
+    .card:hover .card-icon {
+      background: none;
+      color: #ff6348;
+      transform: scale(1.6);
+    }
+    .card p {
+      margin-top: 20px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: 0.3s linear;
+    }
+    .card:hover p {
+      opacity: 1;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dimitris Liavas – Web Developer Portfolio</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a onclick="openContact()">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Some Of My Projects...</h2>
+
+    <div class="project">
+      <a href="https://pythagoreio.gr" target="_blank">
+        <img src="img/pythagoreio.png" alt="Pythagoreio.gr Screenshot">
+      </a>
+      <p>Math & science tutoring center website built with WordPress + Elementor.</p>
+    </div>
+    <div class="project">
+      <a href="https://scrittocoffees.gr" target="_blank">
+        <img src="img/scritto.png" alt="Scrittocoffees.gr Screenshot">
+      </a>
+      <p>WooCommerce store for a specialty coffee brand.</p>
+    </div>
+    <div class="project">
+      <a href="https://boudoirchic.gr" target="_blank">
+        <img src="img/boudoirchic.png" alt="Boudoirchic.gr Screenshot">
+      </a>
+      <p>Elegant e-shop for women’s accessories.</p>
+    </div>
+    <div class="project">
+      <a href="https://hemithea.gr" target="_blank">
+        <img src="img/hemithea.png" alt="Hemithea.gr Screenshot">
+      </a>
+      <p>Luxury hospitality landing page built with Elementor Pro.</p>
+    </div>
+    <div class="project">
+      <a href="https://kafemanteiatheanw.gr" target="_blank">
+        <img src="img/kafemanteia.png" alt="Kafemanteiatheanw.gr Screenshot">
+      </a>
+      <p>One-page site for a personal spiritual guidance service.</p>
+    </div>
+  </main>
+
+  <div class="overlay" id="overlay" onclick="closeContact()"></div>
+  <div class="contact-popup" id="contactPopup">
+    <div class="contact-info">
+      <div class="card">
+        <i class="card-icon far fa-envelope"></i>
+        <p>jimliavas88@gmail.com</p>
+      </div>
+      <div class="card">
+        <i class="card-icon fas fa-phone"></i>
+        <p>+30 697 744 7282</p>
+      </div>
+      <div class="card">
+        <i class="card-icon fas fa-map-marker-alt"></i>
+        <p>Thessaloniki, Greece</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Dimitris Liavas | All rights reserved
+  </footer>
+
+  <script>
+    function openContact() {
+      document.getElementById('contactPopup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closeContact() {
+      document.getElementById('contactPopup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
